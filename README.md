@@ -26,7 +26,7 @@ Below is the list of environment variables you can specify to configure the Trin
 | RECORD_KEY_HIDDEN | If set to false, the primary key column will be available in the result set. | true |
 | INSERT_REQUIRE_KEY | Require the primary key on INSERT queries. Although we recommend that you provide a primary key, you can choose not to by setting this property to false, in which case a UUID is generated for the PK. You can view it by setting aerospike.record-key-hidden to false for future queries. | true |
 | TRINO_DISCOVERY_URI | The URI to the Discovery server. This should be the URI of the Trino coordinator. Replace the default value to match the host and port of the Trino coordinator. This URI must not end in a slash. | http://localhost:8080 |
-| TRINO_NODE_TYPE | The Trino node type, can be either `coordinator` or `worker` | `single-node` |
+| TRINO_NODE_TYPE | The Trino node type, can be either `coordinator` or `worker`. | `single-node` |
 
 Wait for the following message log line:
 ```
@@ -41,10 +41,11 @@ To run a Trino cluster of one coordinator and one worker:
 ```
 docker run --rm -p 8080:8080 -e TRINO_NODE_TYPE=coordinator -e AS_HOSTLIST=docker.for.mac.host.internal:3000 --name trino-aerospike-coordinator trino-aerospike
 ```
-* Start a Trino worker, specify the `TRINO_DISCOVERY_URI` to be the URI of the Trino coordinator.
+* Start a Trino worker<sup>[1](#worker)</sup>, specify the `TRINO_DISCOVERY_URI` to be the URI of the Trino coordinator.
 ```
 docker run --rm -e TRINO_NODE_TYPE=worker -e AS_HOSTLIST=docker.for.mac.host.internal:3000 -e TRINO_DISCOVERY_URI=http://172.17.0.3:8080 --name trino-aerospike-worker trino-aerospike
 ```
+<sup name="worker">1</sup> Run this command number of times with different container names to add more workers.
 
 ## Aerospike Connector Configuration Properties
 The following configuration properties are available:
