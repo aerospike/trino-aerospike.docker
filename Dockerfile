@@ -25,7 +25,7 @@ RUN \
     mv /tmp/trino-aerospike-$CONNECTOR_VERSION /usr/lib/trino/plugin/aerospike && \
     chown -R trino:trino /usr/lib/trino/plugin/aerospike
 
-COPY --chown=trino:trino docker/etc /usr/lib/trino/etc
+COPY --chown=trino:trino docker/etc /etc/trino
 COPY template setup.sh /tmp/
 
 RUN chmod 0777 /tmp/setup.sh
