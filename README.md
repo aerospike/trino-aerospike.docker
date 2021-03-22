@@ -18,7 +18,7 @@ Below is the list of environment variables you can specify to configure the Trin
 | Variable | Description | Default Value |
 | --- | --- | --- |
 | AS_HOSTLIST | Aerospike host list, a comma separated list of potential hosts to seed the cluster. |  |
-| TABLE_DESC_DIR | Path of the directory containing table description files. | /usr/lib/trino/etc/aerospike |
+| TABLE_DESC_DIR | Path of the directory containing table description files. | /etc/trino/aerospike |
 | SPLIT_NUMBER | Number of Trino splits. See Parallelism section for more information. | 4 |
 | CACHE_TTL_MS | Number of milliseconds to keep the inferred schema cached. | 1800000 |
 | DEFAULT_SET_NAME | Table name for the default set. This is used when your namespace has a null set or no sets. | __default |

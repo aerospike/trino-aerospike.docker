@@ -4,7 +4,7 @@ set -e
 export AS_HOSTNAME=${AS_HOSTNAME:-docker.for.mac.host.internal}
 export AS_PORT=${AS_PORT:-3000}
 export AS_HOSTLIST=${AS_HOSTLIST}
-export TABLE_DESC_DIR=${TABLE_DESC_DIR:-etc/aerospike}
+export TABLE_DESC_DIR=${TABLE_DESC_DIR:-/etc/trino/aerospike}
 export SPLIT_NUMBER=${SPLIT_NUMBER:-4}
 export CACHE_TTL_MS=${CACHE_TTL_MS:-1800000}
 export DEFAULT_SET_NAME=${DEFAULT_SET_NAME:-__default}
