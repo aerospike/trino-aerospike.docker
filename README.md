@@ -18,7 +18,7 @@ Below is the list of environment variables you can specify to configure the Trin
 | Variable | Description | Default Value |
 | --- | --- | --- |
 | AS_HOSTLIST | Aerospike host list, a comma separated list of potential hosts to seed the cluster. |  |
-| TABLE_DESC_DIR | Path of the directory containing table description files. | /etc/trino/aerospike |
+| TABLE_DESC_DIR | Path of the directory containing table description files.<sup>[1](#schema-folder)</sup> | /etc/trino/aerospike |
 | SPLIT_NUMBER | Number of Trino splits. See Parallelism section for more information. | 4 |
 | CACHE_TTL_MS | Number of milliseconds to keep the inferred schema cached. | 1800000 |
 | DEFAULT_SET_NAME | Table name for the default set. This is used when your namespace has a null set or no sets. | __default |
@@ -27,6 +27,11 @@ Below is the list of environment variables you can specify to configure the Trin
 | INSERT_REQUIRE_KEY | Require the primary key on INSERT queries. Although we recommend that you provide a primary key, you can choose not to by setting this property to false, in which case a UUID is generated for the PK. You can view it by setting aerospike.record-key-hidden to false for future queries. | true |
 | TRINO_DISCOVERY_URI | The URI to the Discovery server. This should be the URI of the Trino coordinator. Replace the default value to match the host and port of the Trino coordinator. This URI must not end in a slash. | http://localhost:8080 |
 | TRINO_NODE_TYPE | The Trino node type, can be either `coordinator` or `worker`. | `single-node` |
+
+<sup name="schema-folder">1</sup> To set the required schema configuration, bind-mount the table description folder on `docker run`.
+```
+-v "$(pwd)"/docker/etc/aerospike:/etc/trino/aerospike
+```
 
 Wait for the following message log line:
 ```
