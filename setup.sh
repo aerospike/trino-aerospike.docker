@@ -1,6 +1,14 @@
 #!/bin/bash
 set -e
 
+AEROSPIKE_ENVS=0
+if [ ! -z "${AS_HOSTNAME}" ] || [ ! -z "${AS_PORT}" ] || [ ! -z "${AS_HOSTLIST}" ] || \
+[ ! -z "${TABLE_DESC_DIR}" ] || [ ! -z "${SPLIT_NUMBER}" ] || [ ! -z "${CACHE_TTL_MS}" ] || \
+[ ! -z "${DEFAULT_SET_NAME}" ] || [ ! -z "${STRICT_SCHEMAS}" ] || [ ! -z "${RECORD_KEY_NAME}" ] || \
+[ ! -z "${RECORD_KEY_HIDDEN}" ] || [ ! -z "${ENABLE_STATISTICS}" ] || [ ! -z "${INSERT_REQUIRE_KEY}" ]; then
+  AEROSPIKE_ENVS=1
+fi
+
 export AS_HOSTNAME=${AS_HOSTNAME:-docker.for.mac.host.internal}
 export AS_PORT=${AS_PORT:-3000}
 export AS_HOSTLIST=${AS_HOSTLIST}
@@ -14,7 +22,7 @@ export RECORD_KEY_HIDDEN=${RECORD_KEY_HIDDEN:-false}
 export ENABLE_STATISTICS=${ENABLE_STATISTICS:-false}
 export INSERT_REQUIRE_KEY=${INSERT_REQUIRE_KEY:-false}
 
-if [ -f /tmp/aerospike.properties.template ]; then
+if [ -f /tmp/aerospike.properties.template ] && [ $AEROSPIKE_ENVS -eq 1 ]; then
   envsubst < /tmp/aerospike.properties.template > /etc/trino/catalog/aerospike.properties
 fi
 
