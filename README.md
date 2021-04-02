@@ -21,6 +21,7 @@ Below is the list of environment variables you can specify to configure the Trin
 | TABLE_DESC_DIR | Path of the directory containing table description files.<sup>[1](#schema-folder)</sup> | /etc/trino/aerospike |
 | SPLIT_NUMBER | Number of Trino splits. See Parallelism section for more information. | 4 |
 | CACHE_TTL_MS | Number of milliseconds to keep the inferred schema cached. | 1800000 |
+| STRICT_SCHEMAS | Use a strict schema.<sup>[2](#strict-schema)</sup> | false |
 | DEFAULT_SET_NAME | Table name for the default set. This is used when your namespace has a null set or no sets. | __default |
 | RECORD_KEY_NAME | Column name for the record's primary key. Use this in the WHERE clause for queries involving primary key (PK) comparisons. | __key |
 | RECORD_KEY_HIDDEN | If set to false, the primary key column will be available in the result set. | true |
