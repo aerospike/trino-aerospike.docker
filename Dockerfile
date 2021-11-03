@@ -19,7 +19,7 @@ ARG CONNECTOR_VERSION=1.0.0
 
 USER root:root
 RUN \
-    yum -y -q install unzip wget uuid-runtime gettext && \
+    yum -y -q install unzip ca-certificates wget uuid-runtime gettext && \
     wget -q -O /tmp/aerospike.zip "https://www.aerospike.com/artifacts/enterprise/aerospike-trino/$CONNECTOR_VERSION/aerospike-trino-$CONNECTOR_VERSION.zip" && \
     unzip -q /tmp/aerospike.zip -d /tmp && \
     mv /tmp/trino-aerospike-$CONNECTOR_VERSION /usr/lib/trino/plugin/aerospike && \
