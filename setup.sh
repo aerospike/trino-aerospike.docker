@@ -5,7 +5,8 @@ AEROSPIKE_ENVS=0
 if [ ! -z "${AS_HOSTNAME}" ] || [ ! -z "${AS_PORT}" ] || [ ! -z "${AS_HOSTLIST}" ] || \
 [ ! -z "${TABLE_DESC_DIR}" ] || [ ! -z "${SPLIT_NUMBER}" ] || [ ! -z "${CACHE_TTL_MS}" ] || \
 [ ! -z "${DEFAULT_SET_NAME}" ] || [ ! -z "${STRICT_SCHEMAS}" ] || [ ! -z "${RECORD_KEY_NAME}" ] || \
-[ ! -z "${RECORD_KEY_HIDDEN}" ] || [ ! -z "${ENABLE_STATISTICS}" ] || [ ! -z "${INSERT_REQUIRE_KEY}" ]; then
+[ ! -z "${RECORD_KEY_HIDDEN}" ] || [ ! -z "${ENABLE_STATISTICS}" ] || [ ! -z "${INSERT_REQUIRE_KEY}" ] || \
+[ ! -z "${CASE_INSENSITIVE_IDENTIFIERS}" ]; then
   AEROSPIKE_ENVS=1
 fi
 
@@ -21,6 +22,7 @@ export RECORD_KEY_NAME=${RECORD_KEY_NAME:-__key}
 export RECORD_KEY_HIDDEN=${RECORD_KEY_HIDDEN:-false}
 export ENABLE_STATISTICS=${ENABLE_STATISTICS:-false}
 export INSERT_REQUIRE_KEY=${INSERT_REQUIRE_KEY:-false}
+export CASE_INSENSITIVE_IDENTIFIERS=${CASE_INSENSITIVE_IDENTIFIERS:-false}
 
 if [ -f /tmp/aerospike.properties.template ] && [ $AEROSPIKE_ENVS -eq 1 ]; then
   envsubst < /tmp/aerospike.properties.template > /etc/trino/catalog/aerospike.properties
