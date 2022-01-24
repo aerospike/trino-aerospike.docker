@@ -11,11 +11,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-ARG TRINO_VERSION=351
+ARG TRINO_VERSION=368
 
 FROM trinodb/trino:${TRINO_VERSION}
 
-ARG CONNECTOR_VERSION=1.0.0
+ARG CONNECTOR_VERSION=1.6.0
 
 USER root:root
 RUN \
