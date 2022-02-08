@@ -26,6 +26,15 @@ Below is the list of environment variables you can specify to configure the Trin
 | RECORD_KEY_NAME | Column name for the record's primary key. Use this in the WHERE clause for queries involving primary key (PK) comparisons. | __key |
 | RECORD_KEY_HIDDEN | If set to false, the primary key column will be available in the result set. | true |
 | INSERT_REQUIRE_KEY | Require the primary key on INSERT queries. Although we recommend that you provide a primary key, you can choose not to by setting this property to false, in which case a UUID is generated for the PK. You can view it by setting aerospike.record-key-hidden to false for future queries. | true |
+| CASE_INSENSITIVE_IDENTIFIERS | Enables case-insensitive name resolution. Has minor performance penalty when enabled. | false |
+| AS_TLS_ENABLED | Enable secure TLS connection. | false |
+| AS_TLS_STORE_TYPE | The type of the keystore. | jks |
+| AS_TLS_KEYSTORE_PATH | Keystore file path. | |
+| AS_TLS_KEYSTORE_PASSWORD | Keystore password. | |
+| AS_TLS_KEY_PASSWORD | Key password. | |
+| AS_TLS_TRUSTSTORE_PATH | Truststore file path. | |
+| AS_TLS_TRUSTSTORE_PASSWORD | Truststore password. | |
+| AS_TLS_FOR_LOGIN_ONLY | Use TLS connection only for login authentication. | false |
 | TRINO_DISCOVERY_URI | The URI to the Discovery server. This should be the URI of the Trino coordinator. Replace the default value to match the host and port of the Trino coordinator. This URI must not end in a slash. | http://localhost:8080 |
 | TRINO_NODE_TYPE | The Trino node type, can be either `coordinator` or `worker`. | `single-node` |
 

@@ -12,3 +12,12 @@ aerospike.record-key-hidden=${RECORD_KEY_HIDDEN}
 aerospike.enable-statistics=${ENABLE_STATISTICS}
 aerospike.insert-require-key=${INSERT_REQUIRE_KEY}
 aerospike.case-insensitive-identifiers=${CASE_INSENSITIVE_IDENTIFIERS}
+
+aerospike.clientpolicy.tls.enabled=${AS_TLS_ENABLED}
+aerospike.clientpolicy.tls.storeType=${AS_TLS_STORE_TYPE}
+aerospike.clientpolicy.tls.keystorePath=${AS_TLS_KEYSTORE_PATH}
+aerospike.clientpolicy.tls.keystorePassword=${AS_TLS_KEYSTORE_PASSWORD}
+aerospike.clientpolicy.tls.keyPassword=${AS_TLS_KEY_PASSWORD}
+aerospike.clientpolicy.tls.truststorePath=${AS_TLS_TRUSTSTORE_PATH}
+aerospike.clientpolicy.tls.truststorePassword=${AS_TLS_TRUSTSTORE_PASSWORD}
+aerospike.clientpolicy.tls.forLoginOnly=${AS_TLS_FOR_LOGIN_ONLY}

@@ -24,6 +24,15 @@ export ENABLE_STATISTICS=${ENABLE_STATISTICS:-false}
 export INSERT_REQUIRE_KEY=${INSERT_REQUIRE_KEY:-false}
 export CASE_INSENSITIVE_IDENTIFIERS=${CASE_INSENSITIVE_IDENTIFIERS:-false}
 
+export AS_TLS_ENABLED=${AS_TLS_ENABLED:-false}
+export AS_TLS_STORE_TYPE=${AS_TLS_STORE_TYPE:-jks}
+export AS_TLS_KEYSTORE_PATH=${AS_TLS_KEYSTORE_PATH}
+export AS_TLS_KEYSTORE_PASSWORD=${AS_TLS_KEYSTORE_PASSWORD}
+export AS_TLS_KEY_PASSWORD=${AS_TLS_KEY_PASSWORD}
+export AS_TLS_TRUSTSTORE_PATH=${AS_TLS_TRUSTSTORE_PATH}
+export AS_TLS_TRUSTSTORE_PASSWORD=${AS_TLS_TRUSTSTORE_PASSWORD}
+export AS_TLS_FOR_LOGIN_ONLY=${AS_TLS_FOR_LOGIN_ONLY:-false}
+
 if [ -f /tmp/aerospike.properties.template ] && [ $AEROSPIKE_ENVS -eq 1 ]; then
   envsubst < /tmp/aerospike.properties.template > /etc/trino/catalog/aerospike.properties
 fi
