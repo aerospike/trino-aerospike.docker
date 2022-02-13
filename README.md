@@ -13,10 +13,14 @@ To launch it, execute the following:
 ```bash
 docker run --rm -p 8080:8080 --name trino-aerospike trino-aerospike
 ```
+
+*[optional]* If you plan to set up TLS between Aerospike and Trino, copy the TLS related files over to the Docker image by updating the Dockerfile. See the environment variables list below for more information on the TLS related properties.
+Here’s an example of the line added to the Dockerfile to copy files from the local `docker/etc` directory over to the Docker image: `COPY --chown=trino:trino docker/etc /etc/trino`.
+
 Below is the list of environment variables you can specify to configure the Trino server and the Aerospike connector using the [-e](https://docs.docker.com/engine/reference/commandline/run/#set-environment-variables--e---env---env-file) option.
 
 | Variable | Description | Default Value |
-| --- | --- | --- |
+| -------- | ----------- | ------------- |
 | AS_HOSTLIST | Aerospike host list, a comma separated list of potential hosts to seed the cluster. |  |
 | TABLE_DESC_DIR | Path of the directory containing table description files.<sup>[1](#schema-folder)</sup> | /etc/trino/aerospike |
 | SPLIT_NUMBER | Number of Trino splits. See Parallelism section for more information. | 4 |
