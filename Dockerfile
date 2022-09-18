@@ -11,16 +11,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-ARG TRINO_VERSION=369
+ARG TRINO_VERSION=391
 
 FROM trinodb/trino:${TRINO_VERSION}
 
-ARG CONNECTOR_VERSION=2.0.0
+ARG CONNECTOR_VERSION=4.1.0-391
 
 USER root:root
 RUN \
-    yum -y -q install unzip ca-certificates wget uuid-runtime gettext && \
-    wget -q -O /tmp/aerospike.zip "https://www.aerospike.com/artifacts/enterprise/aerospike-trino/$CONNECTOR_VERSION/aerospike-trino-$CONNECTOR_VERSION.zip" && \
+    apt-get update && \
+    apt-get -y -q install unzip ca-certificates wget uuid-runtime gettext && \
+    export BASE_VERSION=$(echo $CONNECTOR_VERSION | cut -d '-' -f 1) && \
+    wget -q -O /tmp/aerospike.zip "https://www.aerospike.com/artifacts/enterprise/aerospike-trino/$BASE_VERSION/aerospike-trino-$CONNECTOR_VERSION.zip" && \
     unzip -q /tmp/aerospike.zip -d /tmp && \
     mv /tmp/trino-aerospike-$CONNECTOR_VERSION /usr/lib/trino/plugin/aerospike && \
     chown -R trino:trino /usr/lib/trino/plugin/aerospike
