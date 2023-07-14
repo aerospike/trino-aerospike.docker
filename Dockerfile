@@ -24,7 +24,7 @@ RUN \
     export BASE_VERSION=$(echo $CONNECTOR_VERSION | cut -d '-' -f 1) && \
 # CONNECTOR-435 Solution
 # Alternative: wget -q -O /tmp/aerospike.zip "https://download.aerospike.com/artifacts/enterprise/aerospike-trino/$BASE_VERSION/aerospike-trino-$CONNECTOR_VERSION.zip" && \
-    wget -q -O /tmp/aerospike.zip "https://www.aerospike.com/artifacts/enterprise/aerospike-trino/$CONNECTOR_VERSION/aerospike-trino-$CONNECTOR_VERSION.zip" && \
+    wget -q -O /tmp/aerospike.zip "https://www.aerospike.com/artifacts/enterprise/aerospike-trino/$BASE_VERSION/aerospike-trino-$CONNECTOR_VERSION.zip" && \
     unzip -q /tmp/aerospike.zip -d /tmp && \
     mv /tmp/trino-aerospike-$CONNECTOR_VERSION /usr/lib/trino/plugin/aerospike && \
     chown -R trino:trino /usr/lib/trino/plugin/aerospike
