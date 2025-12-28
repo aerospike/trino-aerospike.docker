@@ -27,7 +27,9 @@ RUN \
     mv /tmp/trino-aerospike-$CONNECTOR_VERSION /usr/lib/trino/plugin/aerospike && \
     chown -R trino:trino /usr/lib/trino/plugin/aerospike
 
-COPY --chown=trino:trino docker/etc /etc/trino
+# OpenShift runs containers with arbitrary UIDs in the root group (GID 0)
+# Using trino:root ownership and 770 permissions for OpenShift compatibility
+COPY --chown=trino:root --chmod=770 docker/etc /etc/trino
 COPY template setup.sh /tmp/
 
 RUN chmod 0777 /tmp/setup.sh

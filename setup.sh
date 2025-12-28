@@ -55,6 +55,4 @@ else
     exit 1
 fi
 
-chown -R trino:trino /etc/trino
-
 /usr/lib/trino/bin/run-trino
